@@ -13,6 +13,7 @@ def execute
     end
   rescue => e
     p e.message
+    raise
   end
 end
 
@@ -48,4 +49,8 @@ def report_rover
   puts @rover.to_s
 end
 
-execute
+begin
+  execute
+rescue StandardError, Interrupt
+  puts "(ﾉಠдಠ)ﾉ︵┻━┻"
+end
