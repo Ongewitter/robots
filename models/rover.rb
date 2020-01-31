@@ -1,9 +1,6 @@
 require_relative 'coordinate.rb'
 
 class Rover
-  # coordinates {x, y}
-  # orientation
-
   ORIENTATIONS = ['N', 'E', 'S', 'W']
   TURNING = {'L' => -1, 'R' => 1}
   VALID_INSTRUCTIONS = ['L', 'R', 'M']
