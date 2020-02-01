@@ -39,6 +39,16 @@ MMRMMRMRRM
 
 5 1 E  
 
+<h2> How to run </h2>
+
+Check out this repo (duh)
+
+Then run either `ruby main.rb` for manual input 
+
+or
+
+`ruby main.rb input.txt` for automatic input
+
 <h2> Assumptions </h2>
 <ul>
   <li>Ruby only, no Rails</li>
@@ -50,6 +60,6 @@ MMRMMRMRRM
   <li>There are a lot of prompts, in case the user forgets what they are doing, so they wouldn't have to guess at what input is expected</li>
   <li>A user can type "exit" at any moment to quit the program and flip the table</li>
   <li>For that matter, if a user provides wrong input, we quit the program and flip the table</li>
-  <li>Alternatively, one could run the program and provide an input file, much like input.txt. This is why we use gets. We chose not to disable the prompts for this</li>
+  <li>Alternatively, one could run the program and provide an input file, much like the provided input.txt file. This is why we use gets. We chose not to disable the prompts for this</li>
 </ul>
 </h5>
