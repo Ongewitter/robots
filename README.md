@@ -50,12 +50,13 @@ or
 <h2> Assumptions </h2>
 
 * Ruby only, no Rails
+* The program is entirely Command Line Interface
 * Minimal gem usage (I used rspec for testing, that's it)
-* There is a basic set of safeguards, but I assume breaking the program is still possible. This is fine as it is a test project.
+* There is a basic set of safeguards, but I assume breaking the program is still possible. This is fine as it is a test project
 * Tests are written very WET, because <a href="https://thoughtbot.com/blog/lets-not">Let's not</a>
-* There are two commented tests which I would use <a href="https://github.com/thoughtbot/factory_bot">factory_bot</a> for, but since we're trying to keep gems at a minimum, we chose not to actually implement them. For now.
+* There are two commented tests which I would use <a href="https://github.com/thoughtbot/factory_bot">factory_bot</a> for, but since we're trying to keep gems at a minimum, we chose not to actually implement them. For now
 * If wanted, a user could keep adding rovers and moving them around, this is intentional
 * There are a lot of prompts, in case the user forgets what they are doing, so they wouldn't have to guess at what input is expected
 * A user can type "exit" at any moment to quit the program and flip the table
 * For that matter, if a user provides wrong input, we quit the program and flip the table
-* Alternatively, one could run the program and provide an input file, much like the included `input.txt` file. This is why we use `gets`. We chose not to disable the prompts for this method of input.
+* Alternatively, one could run the program and provide an input file, much like the included `input.txt` file. This is why we use `gets`. We chose not to disable the prompts for this method of input
