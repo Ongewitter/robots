@@ -1,7 +1,5 @@
 require_relative 'models/rover.rb'
 
-$max_coords = nil
-
 def execute
   begin
     puts 'Type exit to quit'
@@ -22,7 +20,7 @@ def max_grid
   puts 'Please enter max grid size in format "X Y"'
   get_input
   coordinates = @input&.split(' ')
-  $max_coords = Coordinate.new(x: coordinates[0].to_i, y: coordinates[1].to_i) if coordinates
+  Coordinate.new({x: coordinates[0].to_i, y: coordinates[1].to_i}, true) if coordinates
 end
 
 def create_rover

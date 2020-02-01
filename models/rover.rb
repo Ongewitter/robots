@@ -6,7 +6,7 @@ class Rover
   VALID_INSTRUCTIONS = ['L', 'R', 'M']
 
   def initialize(coordinates: { x: 0, y: 0 }, orientation: 'N', instructions: [])
-    @coordinates = Coordinate.new(x: coordinates[:x], y: coordinates[:y])
+    @coordinates = Coordinate.new(coordinates)
     @orientation = orientation
     @instructions = instructions
 
@@ -42,9 +42,9 @@ class Rover
   def move
     case orientation
     when 'N'
-      coordinates.y = [coordinates.y + 1, $max_coords.y].min
+      coordinates.y = [coordinates.y + 1, Coordinate.max_coords.y].min
     when 'E'
-      coordinates.x = [coordinates.x + 1, $max_coords.x].min
+      coordinates.x = [coordinates.x + 1, Coordinate.max_coords.x].min
     when 'S'
       coordinates.y = [coordinates.y - 1, 0].max
     when 'W'
