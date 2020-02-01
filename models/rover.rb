@@ -10,8 +10,6 @@ class Rover
     @orientation = orientation
     @instructions = instructions
 
-    validate
-
     raise 'Rover is invalid' unless valid?
   end
 
@@ -24,7 +22,7 @@ class Rover
   end
 
   def valid?
-    @valid ||= false
+    @valid ||= validate
   end
 
   attr_accessor :coordinates, :orientation, :instructions
