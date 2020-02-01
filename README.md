@@ -1,6 +1,9 @@
 ### Table of Contents
 
-[MARS ROVERS](#MARSROVERS)
+* [Description](#-description-)
+* [Test Data](#-test-data-)
+* [How to run](#-how-to-run-)
+* [Assumptions](#-assumptions-)
 
 <h1> MARS ROVERS </h1>
 
