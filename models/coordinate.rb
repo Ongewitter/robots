@@ -1,15 +1,13 @@
 class Coordinate
   def initialize(x: 0, y: 0)
     @x = x
-    @y = y
-
-    validate
+    @y = y    
 
     raise 'Coordinate is invalid' unless valid?
   end
 
   def valid?
-    @valid ||= false
+    @valid ||= validate
   end
 
   attr_accessor :x, :y
