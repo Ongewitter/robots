@@ -88,17 +88,26 @@ RSpec.describe Rover, type: :model do
       expect(subject.valid?).to be(true)
     end
 
-    it "returns false if @valid is false" do
+    it "calls #validate if @valid is false" do
       subject.instance_variable_set('@valid', false)
-      expect(subject.valid?).to be(false)
+      expect(subject).to receive(:validate)
+      subject.valid?
     end
 
-    it "returns false if @valid is nil" do
+    it 'returns false if @valid is nil and validate returns false' do
+      expect(subject).to receive(:validate).and_return(false)
       subject.instance_variable_set('@valid', nil)
       expect(subject.valid?).to be(false)
     end
 
-    it "sets @valid to false if @valid is nil" do
+    it 'returns true if @valid is nil and validate returns true' do
+      expect(subject).to receive(:validate).and_return(true)
+      subject.instance_variable_set('@valid', nil)
+      expect(subject.valid?).to be(true)
+    end
+
+    it 'sets @valid if @valid is nil' do
+      expect(subject).to receive(:validate).and_return(false)
       subject.instance_variable_set('@valid', nil)
       subject.valid?
       expect(subject.instance_variable_get('@valid')).to be(false)
@@ -133,9 +142,9 @@ RSpec.describe Rover, type: :model do
   end
 
   context "#move" do
-    context " with $max_coords set to {5, 5} and instructions to ['M']" do
+    context " with Coordinate.max_coords set to {5, 5} and instructions to ['M']" do
       before do
-        $max_coords = Coordinate.new(x: 5, y: 5)
+        Coordinate.new({x: 5, y: 5}, true)
         subject.instructions = ['M']
       end
 
@@ -161,17 +170,17 @@ RSpec.describe Rover, type: :model do
         subject.go
         expect(subject.coordinates.x).to eq(1)
       end
-      it "does not increment coordinates.y if it is $max_coords.y and orientation N" do
-        subject.coordinates.y = $max_coords.y
+      it "does not increment coordinates.y if it is Coordinate.max_coords.y and orientation N" do
+        subject.coordinates.y = Coordinate.max_coords.y
         subject.orientation = 'N'
         subject.go
-        expect(subject.coordinates.y).to eq($max_coords.y)
+        expect(subject.coordinates.y).to eq(Coordinate.max_coords.y)
       end
-      it "does not increment coordinates.x if it is $max_coords.x and orientation E" do
-        subject.coordinates.x = $max_coords.y
+      it "does not increment coordinates.x if it is Coordinate.max_coords.x and orientation E" do
+        subject.coordinates.x = Coordinate.max_coords.y
         subject.orientation = 'E'
         subject.go
-        expect(subject.coordinates.x).to eq($max_coords.y)
+        expect(subject.coordinates.x).to eq(Coordinate.max_coords.y)
       end
       it "does not decrement coordinates.y if it is 0 and orientation S" do
         subject.coordinates.y = 0
