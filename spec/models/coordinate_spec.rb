@@ -26,38 +26,11 @@ RSpec.describe Coordinate, type: :model do
   end
 
   context '#valid?' do
-    it 'returns true if @valid is true' do
-      subject.instance_variable_set('@valid', true)
-      expect(subject.valid?).to be(true)
-    end
-
-    it 'calls #validate if @valid is false' do
-      subject.instance_variable_set('@valid', false)
-      expect(subject).to receive(:validate)
+    it "calls #validate" do
+      expect( subject ).to receive(:validate)
       subject.valid?
     end
 
-    it 'returns false if @valid is nil and validate returns false' do
-      expect(subject).to receive(:validate).and_return(false)
-      subject.instance_variable_set('@valid', nil)
-      expect(subject.valid?).to be(false)
-    end
-
-    it 'returns true if @valid is nil and validate returns true' do
-      expect(subject).to receive(:validate).and_return(true)
-      subject.instance_variable_set('@valid', nil)
-      expect(subject.valid?).to be(true)
-    end
-
-    it 'sets @valid if @valid is nil' do
-      expect(subject).to receive(:validate).and_return(false)
-      subject.instance_variable_set('@valid', nil)
-      subject.valid?
-      expect(subject.instance_variable_get('@valid')).to be(false)
-    end
-  end
-
-  context '#validate' do
     context 'without @@max_coords set' do
       # NOTE using mathematical point notation for ease
       it 'returns true if (x,y) is Integer and >= 0' do
@@ -104,7 +77,7 @@ RSpec.describe Coordinate, type: :model do
       end
 
       it 'returns false if y > @@max_coords.y' do
-        subject.x = Coordinate.max_coords.y + 1
+        subject.y = Coordinate.max_coords.y + 1
         expect( subject.send(:validate) ).to be(false)
       end
     end
