@@ -157,6 +157,13 @@ RSpec.describe Rover, type: :model do
           subject.go
           expect( subject.orientation ).to eq('E')
         end
+
+        it 'changes self.orientation to a value in ORIENTATIONS' do
+          subject.orientation = 'N'
+          subject.instructions = ['L']
+          subject.go
+          expect( Rover::ORIENTATIONS ).to include(subject.orientation)
+        end
       end
 
       context 'with orientation E' do
@@ -172,6 +179,13 @@ RSpec.describe Rover, type: :model do
           subject.instructions = ['R']
           subject.go
           expect( subject.orientation ).to eq('S')
+        end
+
+        it 'changes self.orientation to a value in ORIENTATIONS' do
+          subject.orientation = 'E'
+          subject.instructions = ['L']
+          subject.go
+          expect( Rover::ORIENTATIONS ).to include(subject.orientation)
         end
       end
 
@@ -189,6 +203,13 @@ RSpec.describe Rover, type: :model do
           subject.go
           expect( subject.orientation ).to eq('W')
         end
+
+        it 'changes self.orientation to a value in ORIENTATIONS' do
+          subject.orientation = 'S'
+          subject.instructions = ['L']
+          subject.go
+          expect( Rover::ORIENTATIONS ).to include(subject.orientation)
+        end
       end
 
       context 'with orientation W' do
@@ -205,14 +226,13 @@ RSpec.describe Rover, type: :model do
           subject.go
           expect( subject.orientation ).to eq('N')
         end
-      end
 
-
-      it 'changes self.orientation to a value in ORIENTATIONS' do
-        subject.orientation = 'N'
-        subject.instructions = ['L']
-        subject.go
-        expect( Rover::ORIENTATIONS ).to include(subject.orientation)
+        it 'changes self.orientation to a value in ORIENTATIONS' do
+          subject.orientation = 'W'
+          subject.instructions = ['L']
+          subject.go
+          expect( Rover::ORIENTATIONS ).to include(subject.orientation)
+        end
       end
     end
   end
