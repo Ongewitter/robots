@@ -22,7 +22,7 @@ class Rover
   end
 
   def valid?
-    @valid ||= validate
+    validate
   end
 
   attr_accessor :coordinates, :orientation, :instructions
@@ -62,6 +62,6 @@ class Rover
     orientation_check = ORIENTATIONS.include?(orientation)
     instructions_check = instructions.all? { |instruction| VALID_INSTRUCTIONS.include?(instruction) }
 
-    @valid = coordinates_check && orientation_check && instructions_check
+    coordinates_check && orientation_check && instructions_check
   end
 end

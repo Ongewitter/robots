@@ -11,7 +11,7 @@ class Coordinate
   end
 
   def valid?
-    @valid ||= validate
+    validate
   end
 
   def self.max_coords
@@ -29,6 +29,6 @@ class Coordinate
       x_check &&= @x <= @@max_coords.x
       y_check &&= @y <= @@max_coords.y
     end
-    @valid = x_check && y_check
+    x_check && y_check
   end
 end
