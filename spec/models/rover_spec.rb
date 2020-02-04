@@ -7,8 +7,8 @@ RSpec.describe Rover, type: :model do
     it "creates a rover when given no parameters" do
       rover = Rover.new
       expect(rover).to have_attributes(
-        :orientation => 'N',
-        :instructions => []
+        orientation: 'N',
+        instructions: []
       )
     end
 
@@ -20,8 +20,8 @@ RSpec.describe Rover, type: :model do
     it "creates a rover when given valid parameters" do
       rover = Rover.new(coordinates: { x: 1, y: 1 }, orientation: 'S', instructions: ['L','R','M'] )
       expect(rover).to have_attributes(
-        :orientation => 'S',
-        :instructions => ['L','R','M']
+        orientation: 'S',
+        instructions: ['L','R','M']
       )
     end
 

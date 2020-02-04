@@ -7,16 +7,16 @@ RSpec.describe Coordinate, type: :model do
     it 'creates a coordinate when given no parameters' do
       coordinate = Coordinate.new()
       expect(coordinate).to have_attributes(
-        :x => 0,
-        :y => 0
+        x: 0,
+        y: 0
       )
     end
 
     it 'creates a coordinate when given valid parameters' do
       coordinate = Coordinate.new( x: 1, y: 1 )
       expect(coordinate).to have_attributes(
-        :x => 1,
-        :y => 1
+        x: 1,
+        y: 1
       )
     end
 
